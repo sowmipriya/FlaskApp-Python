@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"-->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="static/css/main.css">
+        {% if css %}
+            {{css|safe}}
+        {% endif %}
+        <title>Dezzex</title>
+    </head>
+
+    <style>
+        h1 {
+    width:500px;
+    margin: 0 auto;
+    background: pink;
+    text-align: center;
+}
+.wrapper{
+text-align: center;  
+font-size: 30px;  
+}
+    </style>
+    <body>
+        <div class='wrapper' class='container-fluid'>
+        {% if header %}
+            <div id='header' class='col-md-offset-1 col-md-10'>
+                <div class='col-md-4 col-lg-3 col-xl-2'>
+                    {% if 'image' in header %}
+                        <img class='{{header.image.class}}' src='{{header.image.src}}' alt='{{header.image.alt}}'></img>
+                    {% endif %}
+                </div>
+                <div class='col-md-8 col-lg-9 col-xl-10'>
+                    <div class='col-md-12 socialButtons'>
+                        <div class="g-plusone" data-width="120" data-href="http://www.bnjmnjhnsn.com/"></div>
+                        <div class="fb-share-button" data-href="http://www.bnjmnjhnsn.com/" data-layout="button_count"></div>
+                        <div><script type="IN/Share" data-url="http://www.bnjmnjhnsn.com" data-counter="right"></script></div>
+                    </div>
+                    <div class='col-md-12 col-lg-7'>
+                        <h2 class='subheader'>{{header.line}}</h2>
+                    </div>
+                    <div class='col-xs-0 col-sm-0 col-md-0 col-lg-5 height-30'>&nbsp;</div>
+                    <div class='col-md-12 col-lg-5'>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <h1>Dezzex - Flask Web Application</h1>
+        <div id='content' class='col-md-offset-1 col-md-10'>
+                {% block content %}{% endblock %}
+                <div class='col-md-12 footerSpace'>&nbsp;</div>
+            </div>
+                <hr/>
+                <div class='nav col-md-12'>
+                    <ul>
+                        <li>
+                            <a href='{{request.url_root}}' title='Home' {% if 'index' in request.path or request.path=='/' %}class='selected'{% endif %}>
+                                Home
+                            </a>
+                        </li>
+                        <li>&mdash;</li>
+                        <li>
+                            <a href='register' title='Register' {% if 'register' in request.path %}class='selected'{% endif %}>
+                                Register
+                            </a>
+                        </li>
+                        <li>&mdash;</li>
+                        <li>
+                            <a href='sign' title='SignIn' {% if 'sign' in request.path %}class='selected'{% endif %}>
+                                SignIn
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+                
+        </div>
+        <div id="fb-root"></div>
+        
+    </body>
+    {% if js %}
+        {{js|safe}}
+    {% endif %}
+    <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+</html>
